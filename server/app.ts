@@ -1,7 +1,6 @@
 import { createRequestHandler } from '@react-router/express'
 import express from 'express'
 import 'react-router'
-import { DEFAULT_LIMIT_SEARCH } from '~/constants'
 import { flights } from '~/data'
 import delayedResponse from '~/utils/delayedResponse'
 import { filterFlights, limitFlights } from '~/utils/flights'

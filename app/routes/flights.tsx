@@ -17,7 +17,7 @@ export async function clientLoader(): Promise<Flight[]> {
 export default function Flights({ loaderData: flights }: { loaderData: Flight[] }) {
   return (
     <Container>
-      <h2 className="my-8">All Flights</h2>
+      <h1 className="mb-8">All Flights</h1>
       {flights && flights.length === 0 && <NoFlightsFound />}
       {flights && flights.length > 0 && <FlightList flights={flights} />}
     </Container>

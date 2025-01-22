@@ -1,10 +1,13 @@
 import type { Flight } from 'types'
 import IconChevronRight from '~/components/Icons/IconChevronRight'
+import { SCHIPHOL_URL } from '~/constants'
 
-export default function FlightCard({ flightNumber, airport, date, expectedTime, originalTime, url }: Flight) {
+export default function FlightCard({ flightNumber, airport, expectedTime, originalTime, url }: Flight) {
+  const flightUrl = `${SCHIPHOL_URL}${url}`
+
   return (
     <a
-      href={url}
+      href={flightUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center justify-between p-4 bg-white rounded-md transition-colors duration-200 shadow-md hover:shadow-lg group"

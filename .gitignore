@@ -1,0 +1,5 @@
+.DS_Store
+.react-router/
+.vercel/
+build/
+node_modules/

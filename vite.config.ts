@@ -20,6 +20,6 @@ export default defineConfig(({ isSsrBuild, command }) => ({
   ssr: {
     noExternal: command === 'build' ? true : undefined
   },
-  plugins: [reactRouter(), tsconfigPaths()],
-  assetsInclude: ['*/.woff2']
+  base: '/',
+  plugins: [reactRouter(), tsconfigPaths()]
 }))

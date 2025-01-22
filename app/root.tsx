@@ -32,7 +32,6 @@ export const links: Route.LinksFunction = () => [
   },
   { rel: 'stylesheet', href: colorsStylesheet },
   { rel: 'stylesheet', href: tailwindStylesheet },
-
   { rel: 'stylesheet', href: appStylesheet }
 ]
 
@@ -47,9 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <FlightsProvider>
-          <header>
-            <TopBar />
-          </header>
+          <TopBar />
           <main>{children}</main>
           <ScrollRestoration />
           <Scripts />

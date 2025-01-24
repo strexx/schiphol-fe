@@ -2,6 +2,7 @@ import Input from '~/components/Form/Input'
 import { useRef, useEffect } from 'react'
 import IconSearch from '~/components/Icons/IconSearch'
 import { Error } from '~/components/Error/Error'
+
 type SearchBarProps = {
   loading: boolean
   error: string | null

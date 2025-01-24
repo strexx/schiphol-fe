@@ -52,7 +52,7 @@ export function FlightsProvider({ children }: { children: React.ReactNode }) {
       const response = await getFlightsBySearch(searchQuery, limit)
       setFlights(response)
     } catch (err) {
-      setError(err)
+      setError(err as Error)
     } finally {
       setLoading(false)
       setIsInitialized(true)

@@ -1,5 +1,5 @@
 import { json, LoaderFunctionArgs } from '@remix-run/node'
-import { querySchema } from 'schema/flights'
+import { flightsSchema } from 'schema/flights'
 import { Flight } from 'types'
 import { z } from 'zod'
 import { flights } from '~/data'
@@ -13,7 +13,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     const searchParams = Object.fromEntries(url.searchParams.entries())
 
     // Validate query parameters using Zod
-    const { search, limit } = querySchema.parse(searchParams)
+    const { search, limit } = flightsSchema.parse(searchParams)
 
     // If no search query, return all flights with limit if specified
     if (!search) {

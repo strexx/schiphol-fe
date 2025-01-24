@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import type { Sort } from 'types'
 import Select from '~/components/Form/Select'
 
 type FlightResultsProps = {

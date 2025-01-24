@@ -22,8 +22,14 @@ export default function SearchBar({
   inputError
 }: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement>(null)
+
   const focusInput = () => {
     inputRef.current?.focus()
+  }
+
+  const handleClearWithFocus = () => {
+    handleClear()
+    focusInput()
   }
 
   useEffect(() => {
@@ -33,17 +39,13 @@ export default function SearchBar({
     }
   }, [loading])
 
-  const handleClearWithFocus = () => {
-    handleClear()
-    focusInput()
-  }
-
   return (
     <div className="search-bar">
       <form onSubmit={handleSubmit}>
         <Input
           ref={inputRef}
           type="search"
+          name="search"
           placeholder="Enter destination or flight number"
           onChange={handleChange}
           disabled={loading}
@@ -53,7 +55,7 @@ export default function SearchBar({
           error={inputError}
         />
       </form>
-      {error && <Error className="mb-16">{error}</Error>}
+      {error && <Error className="mt-4">Something went wrong while fetching flights</Error>}
     </div>
   )
 }

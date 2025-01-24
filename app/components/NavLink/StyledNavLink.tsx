@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router'
+import { NavLink } from '@remix-run/react'
 import clsx from 'clsx'
 
 interface StyledNavLinkProps {

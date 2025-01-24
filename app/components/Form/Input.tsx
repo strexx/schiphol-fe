@@ -1,33 +1,25 @@
+import React from 'react'
 import clsx from 'clsx'
 import IconSearch from '~/components/Icons/IconSearch'
 import IconClear from '~/components/Icons/IconClear'
 import { Error } from '~/components/Error/Error'
 
 type Props = {
-  ref: React.RefObject<HTMLInputElement | null>
-  placeholder: string
-  type: 'text' | 'number' | 'email' | 'password' | 'search'
+  placeholder: HTMLInputElement['placeholder']
+  type: HTMLInputElement['type']
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  value?: string
-  disabled?: boolean
-  autoFocus?: boolean
-  rightIcon?: React.ReactNode
   handleClear?: () => void
+  value?: HTMLInputElement['value']
+  disabled?: HTMLInputElement['disabled']
+  rightIcon?: React.ReactNode
   error?: string | null
+  name?: HTMLInputElement['name']
 }
 
-export default function Input({
-  ref,
-  placeholder,
-  type,
-  value,
-  onChange,
-  disabled,
-  autoFocus,
-  rightIcon,
-  handleClear,
-  error
-}: Props) {
+const Input = React.forwardRef<HTMLInputElement, Props>(function Input(
+  { placeholder, type, value, onChange, disabled, rightIcon, handleClear, error, name, ...rest }: Props,
+  ref
+) {
   return (
     <>
       <div className="relative w-full">
@@ -40,12 +32,13 @@ export default function Input({
             error && 'border border-red-500 focus:border-red-500'
           )}
           type={type}
+          name={name}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           disabled={disabled}
-          autoFocus={autoFocus}
           autoComplete="off"
+          {...rest}
         />
 
         {type === 'search' && (
@@ -78,4 +71,6 @@ export default function Input({
       {error && <Error className="mt-4">{error}</Error>}
     </>
   )
-}
+})
+
+export default Input

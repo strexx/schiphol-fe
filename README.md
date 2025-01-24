@@ -24,7 +24,7 @@ Start the development server with HMR:
 pnpm run dev
 ```
 
-The application will be available at `http://localhost:3000`.
+The application will be available at `http://localhost:5173`.
 
 ## Building for Production
 
@@ -48,4 +48,4 @@ Please see the [assignment](app/docs/assignment.md) file for the original assign
 
 ---
 
-Built with ❤️ using React Router.
+Built with ❤️ using Remix .

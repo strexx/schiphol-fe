@@ -1,35 +1,14 @@
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import type { LinksFunction } from '@remix-run/node'
 
-import type { Route } from './+types/root'
 import colorsStylesheet from './styles/colors.css?url'
 import tailwindStylesheet from './styles/tailwind.css?url'
 import appStylesheet from './styles/app.css?url'
 import TopBar from '~/components/TopBar/TopBar'
-import Container from './components/Container/Container'
 import { FlightsProvider } from './context/FlightsContext'
+import Container from './components/Container/Container'
 
-export const links: Route.LinksFunction = () => [
-  {
-    rel: 'preload',
-    as: 'font',
-    href: '/fonts/Neue-Frutiger-Regular.woff2',
-    type: 'font/woff2',
-    crossOrigin: 'anonymous'
-  },
-  {
-    rel: 'preload',
-    as: 'font',
-    href: '/fonts/Neue-Frutiger-Medium.woff2',
-    type: 'font/woff2',
-    crossOrigin: 'anonymous'
-  },
-  {
-    rel: 'preload',
-    as: 'font',
-    href: '/fonts/Neue-Frutiger-Bold.woff2',
-    type: 'font/woff2',
-    crossOrigin: 'anonymous'
-  },
+export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: colorsStylesheet },
   { rel: 'stylesheet', href: tailwindStylesheet },
   { rel: 'stylesheet', href: appStylesheet }
@@ -60,7 +39,7 @@ export default function App() {
   return <Outlet />
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+export function ErrorBoundary({ error }: { error: Error }) {
   let message = 'Oops!'
   let details = 'An unexpected error occurred.'
   let stack: string | undefined

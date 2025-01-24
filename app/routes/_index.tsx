@@ -1,4 +1,3 @@
-import type { Route } from './+types/home'
 import Container from '~/components/Container/Container'
 import { useCallback, useEffect, useState } from 'react'
 import SearchBar from '~/components/SearchBar/SearchBar'
@@ -9,7 +8,7 @@ import useFlightsContext from '~/context/FlightsContext'
 import FlightLoader from '~/components/Flights/FlightLoader'
 import NoFlightsFound from '~/components/Flights/NoFlightsFound'
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [{ title: 'Schiphol - Search Flights' }, { name: 'description', content: 'Search for flights' }]
 }
 
@@ -19,11 +18,14 @@ export default function Home() {
 
   const [inputError, setInputError] = useState<string | null>(null)
 
-  const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    setSearch(value)
-    setInputError(null)
-  }, [])
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target
+      setSearch(value)
+      setInputError(null)
+    },
+    [setSearch]
+  )
 
   const handleSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
@@ -36,24 +38,28 @@ export default function Home() {
 
       fetchFlights(search, limit)
     },
-    [search, limit]
+    [search, fetchFlights, limit]
   )
 
   const handleClear = useCallback(() => {
     setSearch('')
     setInputError(null)
-  }, [])
+  }, [setSearch])
+
+  const noFlightsFound = isInitialized && flights.length === 0 && !loading
+  const hasFlights = !loading && flights.length > 0
 
   useEffect(() => {
     if (validateSearch(debouncedSearch)) {
       fetchFlights(debouncedSearch, limit)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch, limit])
 
   return (
     <Container>
       <h1 className="mb-8">Welcome to Schiphol Flights</h1>
-      <div className="bg-gradient-at-schiphol p-4 rounded-md mb-8">
+      <div className="bg-gradient-parking p-4 rounded-md mb-8">
         <h2 className="text-lg font-semibold mb-4">Search for flights</h2>
         <SearchBar
           loading={loading}
@@ -67,8 +73,8 @@ export default function Home() {
       </div>
 
       {loading && <FlightLoader />}
-      {isInitialized && !loading && flights.length === 0 && <NoFlightsFound />}
-      {!loading && flights.length > 0 && <FlightResults />}
+      {noFlightsFound && <NoFlightsFound />}
+      {hasFlights && <FlightResults />}
     </Container>
   )
 }

@@ -1,6 +1,6 @@
 export default function Logo() {
   return (
-    <a data-discover="true" aria-current="page" className="active" href="/">
+    <a aria-label="Homepage Schiphol" href="/">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 265 70.2"

@@ -4,12 +4,13 @@ This is a demo app for showing and searching flights at Schiphol Airport. I have
 
 ## Index
 
-- [Getting Started](#getting-started)
+- [Features](#features)
+- [Deployment](#deployment)
 - [Styling](#styling)
 - [Original Assignment](#original-assignment)
-- [Requirements](#requirements)
 - [Resources](#resources)
 - [Future recommendations](#future-recommendations)
+- [Running the app](#running-the-app)
 
 ## Features
 
@@ -29,34 +30,6 @@ This is a demo app for showing and searching flights at Schiphol Airport. I have
 - [x] Limit the number of flights displayed (added a dropdown)
 - [x] Randomized delayed response
 - [x] Deployed with Vercel on https://schiphol-fe.vercel.app/
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-pnpm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-pnpm run dev
-```
-
-The application will be available at `http://localhost:5173`.
-
-### Building for Production
-
-Create a production build:
-
-```bash
-pnpm run build
-```
 
 ### Deployment
 
@@ -85,6 +58,34 @@ Please see the [assignment](app/docs/assignment.md) file for the original assign
 - [ ] Make a flight detail page
 - [ ] Combine ZOD schema with front-end and back-end
 - [ ] Autocomplete search
+
+## Running the app
+
+### Installation
+
+Install the dependencies:
+
+```bash
+pnpm install
+```
+
+### Development
+
+Start the development server with HMR:
+
+```bash
+pnpm run dev
+```
+
+The application will be available at `http://localhost:5173`.
+
+### Building for Production
+
+Create a production build:
+
+```bash
+pnpm run build
+```
 
 ---
 

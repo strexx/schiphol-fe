@@ -11,6 +11,7 @@ export default function StyledNavLink({ to, children, className }: StyledNavLink
   return (
     <NavLink
       to={to}
+      viewTransition
       className={({ isActive }) =>
         clsx(
           {

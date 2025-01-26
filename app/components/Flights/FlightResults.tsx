@@ -9,7 +9,7 @@ export default function FlightResults() {
   return (
     <section className="flight-results" data-testid="flight-results">
       <div className="flex justify-between mb-4 sm:flex-row flex-col">
-        <span className="text-2xl font-bold text-dusk font-sans mb-4 sm:mb-0">
+        <span aria-live="polite" className="text-2xl font-bold text-dusk font-sans mb-4 sm:mb-0">
           {sortedFlights.length} flight{sortedFlights.length > 1 ? 's' : ''} found
         </span>
         <div className="sm:ml-auto">

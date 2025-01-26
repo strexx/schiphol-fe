@@ -2,7 +2,9 @@ import type { Flight } from 'types'
 import IconChevronRight from '~/components/Icons/IconChevronRight'
 import { SCHIPHOL_URL } from '~/constants'
 
-export default function FlightCard({ flightNumber, airport, expectedTime, originalTime, url }: Flight) {
+type FlightCardProps = Flight & { ref?: React.Ref<HTMLAnchorElement> }
+
+export default function FlightCard({ flightNumber, airport, expectedTime, originalTime, url, ref }: FlightCardProps) {
   const flightUrl = `${SCHIPHOL_URL}${url}`
 
   return (
@@ -12,6 +14,7 @@ export default function FlightCard({ flightNumber, airport, expectedTime, origin
       rel="noopener noreferrer"
       className="flex items-center justify-between p-4 bg-white rounded-md transition-colors duration-200 shadow-md hover:shadow-lg group"
       aria-label={`Details for flight ${flightNumber} to ${airport}`}
+      ref={ref}
     >
       <div className="text-left">
         <p className="text-xs">Original:{originalTime}</p>

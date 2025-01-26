@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import clsx from 'clsx'
 import IconSearch from '~/components/Icons/IconSearch'
 import IconClear from '~/components/Icons/IconClear'
@@ -14,9 +14,10 @@ type Props = {
   rightIcon?: React.ReactNode
   error?: string | null
   name?: HTMLInputElement['name']
+  ref?: React.Ref<HTMLInputElement>
 }
 
-const Input = React.forwardRef<HTMLInputElement, Props>(function Input(
+export default forwardRef<HTMLInputElement, Props>(function Input(
   { placeholder, type, value, onChange, disabled, rightIcon, handleClear, error, name, ...rest }: Props,
   ref
 ) {
@@ -38,6 +39,8 @@ const Input = React.forwardRef<HTMLInputElement, Props>(function Input(
           onChange={onChange}
           disabled={disabled}
           autoComplete="off"
+          aria-describedby="search-error-message"
+          aria-invalid={error ? true : undefined}
           {...rest}
         />
 
@@ -68,9 +71,11 @@ const Input = React.forwardRef<HTMLInputElement, Props>(function Input(
           <div className="absolute right-4 top-1/2 -translate-y-1/2">{rightIcon}</div>
         )}
       </div>
-      {error && <Error className="mt-4">{error}</Error>}
+      {error && (
+        <Error id="search-error-message" className="mt-4">
+          {error}
+        </Error>
+      )}
     </>
   )
 })
-
-export default Input

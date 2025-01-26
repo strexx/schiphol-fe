@@ -26,7 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <FlightsProvider>
           <TopBar />
-          <main>{children}</main>
+          <main role="main">{children}</main>
           <ScrollRestoration />
           <Scripts />
         </FlightsProvider>

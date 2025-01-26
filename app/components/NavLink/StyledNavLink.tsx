@@ -1,17 +1,19 @@
-import { NavLink } from '@remix-run/react'
+import { NavLink, type NavLinkProps } from '@remix-run/react'
 import clsx from 'clsx'
 
 interface StyledNavLinkProps {
-  to: string
+  to: NavLinkProps['to']
   children: React.ReactNode
   className?: string
+  prefetch?: NavLinkProps['prefetch']
 }
 
-export default function StyledNavLink({ to, children, className }: StyledNavLinkProps) {
+export default function StyledNavLink({ to, children, className, prefetch }: StyledNavLinkProps) {
   return (
     <NavLink
       to={to}
       viewTransition
+      prefetch={prefetch}
       className={({ isActive }) =>
         clsx(
           {

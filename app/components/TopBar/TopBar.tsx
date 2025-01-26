@@ -11,7 +11,9 @@ export default function TopBar() {
             <Logo />
             <nav className="space-x-4">
               <StyledNavLink to="/">Search Flights</StyledNavLink>
-              <StyledNavLink to="/flights">All Flights</StyledNavLink>
+              <StyledNavLink to="/flights" prefetch="intent">
+                All Flights
+              </StyledNavLink>
             </nav>
           </div>
         </Container>
